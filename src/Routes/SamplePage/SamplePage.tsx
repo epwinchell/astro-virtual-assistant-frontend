@@ -53,9 +53,7 @@ const SamplePage = () => {
             <Split hasGutter>
               <SplitItem isFilled>
                 <TextContent className="pf-u-p-md pf-u-color-light-100">
-                  <Text>
-                    Answer Blaster 3000-Ultra 2.0
-                  </Text>
+                  <Text>Answer Blaster 3000-Ultra 2.0</Text>
                 </TextContent>
               </SplitItem>
               <SplitItem>
@@ -66,8 +64,7 @@ const SamplePage = () => {
             </Split>
           </StackItem>
           <StackItem className="astro-l-stack__body pf-u-p-md pf-m-scrollable" isFilled>
-
-          {/*chat content area*/}
+            {/*chat content area*/}
 
             <Split className="astro-chatbot">
               <SplitItem className="astro-chatbot-icon">
@@ -76,17 +73,21 @@ const SamplePage = () => {
                 </Icon>
               </SplitItem>
               <SplitItem className="astro-chatbot-dialog">
-                <div className="bubble bubble-bottom-bot">
-                  Which set of Hybrid Cloud Console services can I help you with?
-                </div>
+                <div className="bubble bubble-bottom-bot">Which set of Hybrid Cloud Console services can I help you with?</div>
               </SplitItem>
             </Split>
 
+            <div className="astro-options">
+              <Label>OpenShift</Label>
+              <Label>Ansible</Label>
+              <Label>RHEL</Label>
+              <Label>Cloud Native Development</Label>
+              <Label>Console Services</Label>
+            </div>
+
             <Split className="astro-user">
               <SplitItem className="astro-user-dialog">
-                <div className="bubble bubble-user bubble-bottom-user">
-                  OpenShift
-                </div>
+                <div className="bubble bubble-user bubble-bottom-user">OpenShift</div>
               </SplitItem>
               <SplitItem className="astro-user-icon">
                 <Icon size="lg">
@@ -95,25 +96,22 @@ const SamplePage = () => {
               </SplitItem>
             </Split>
 
-          {/* end chat content area*/}
-
-
+            {/* end chat content area*/}
           </StackItem>
           <StackItem className="astro-l-stack__footer">
             <InputGroup>
-              <TextInput placeholder="Type a message..." name="" id="" type="text" aria-label=""/>
-                <InputGroupText id="username">
-                  <Button variant="plain" className="pf-u-px-sm">
-                    <RedoIcon />
-                  </Button>
-                  <Button variant="plain" className="pf-u-px-sm">
-                    <PlaneIcon />
-                  </Button>
-               </InputGroupText>
+              <TextInput placeholder="Type a message..." name="" id="" type="text" aria-label="" />
+              <InputGroupText id="username">
+                <Button variant="plain" className="pf-u-px-sm">
+                  <RedoIcon />
+                </Button>
+                <Button variant="plain" className="pf-u-px-sm">
+                  <PlaneIcon />
+                </Button>
+              </InputGroupText>
             </InputGroup>
           </StackItem>
         </Stack>
-
       </Main>
     </React.Fragment>
   );
