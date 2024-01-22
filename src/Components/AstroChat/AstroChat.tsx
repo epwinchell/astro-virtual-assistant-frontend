@@ -21,11 +21,22 @@ interface AstroChatProps {
   preview: boolean;
   onClose: () => void;
   blockInput: boolean;
+  fullscreen: boolean;
+  setFullScreen: (isFullScreen: boolean) => void;
 }
 
 const findConversationEndBanner = (message: Message) => message.from === From.INTERFACE && message.type === 'finish_conversation_banner';
 
-export const AstroChat: React.FunctionComponent<AstroChatProps> = ({ messages, setMessages, ask, preview, onClose, blockInput }) => {
+export const AstroChat: React.FunctionComponent<AstroChatProps> = ({
+  messages,
+  setMessages,
+  ask,
+  preview,
+  onClose,
+  blockInput,
+  fullscreen,
+  setFullScreen,
+}) => {
   const astroContainer = useRef<HTMLDivElement>(null);
   const [input, setInput] = useState<string>('');
 
@@ -85,7 +96,7 @@ export const AstroChat: React.FunctionComponent<AstroChatProps> = ({ messages, s
 
   return (
     <div ref={astroContainer}>
-      <Stack className="astro-l-stack">
+      <Stack className={`astro-l-stack ${fullscreen ? 'astro-l-stack-full-screen' : ''}`}>
         <StackItem className="astro-l-stack__header pf-v5-pt-xs">
           <Split hasGutter>
             <SplitItem isFilled>
@@ -94,9 +105,13 @@ export const AstroChat: React.FunctionComponent<AstroChatProps> = ({ messages, s
               </TextContent>
             </SplitItem>
             <SplitItem>
-              <Button variant="plain" aria-label="Full screen" className="astro-c-button-minimize pf-v5-u-p-md pf-v5-u-pl-sm pf-v5-u-color-light-100">
-                <CompressAltIcon />
-                <ExpandAltIcon />
+              <Button
+                variant="plain"
+                aria-label="Full screen"
+                onClick={() => setFullScreen(!fullscreen)}
+                className="astro-c-button-minimize pf-v5-u-p-md pf-v5-u-pl-sm pf-v5-u-color-light-100"
+              >
+                {fullscreen ? <CompressAltIcon /> : <ExpandAltIcon />}
               </Button>
               <Button
                 variant="plain"

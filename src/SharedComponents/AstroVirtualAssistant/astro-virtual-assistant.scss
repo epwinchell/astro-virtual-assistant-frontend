@@ -15,8 +15,6 @@
 .astro-l-stack {
   width: 350px;
   height: 550px;
-  // width: calc(100vw - 60px);
-  // height: calc(100vh - 220px);
   @media screen and (max-width: 768px) {
     height: 420px;
     width: 100%;
@@ -146,6 +144,11 @@
     --pf-c-divider--BackgroundColor: var(--pf-v5-global--BackgroundColor--100);
     margin: 4px 0 4px 0;
   }
+}
+
+.astro-l-stack-full-screen {
+  width: calc(100vw - 60px);
+  height: calc(100vh - 220px);
 }
 
 .astro-wrapper-stack {
