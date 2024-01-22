@@ -9,6 +9,8 @@ import { SystemMessageEntry } from '../Message/SystemMessageEntry';
 import { UserMessageEntry } from '../Message/UserMessageEntry';
 import { FeedbackAssistantEntry } from '../Message/FeedbackMessageEntry';
 import PlaneIcon from '@patternfly/react-icons/dist/esm/icons/paper-plane-icon';
+import CompressAltIcon from '@patternfly/react-icons/dist/esm/icons/compress-alt-icon';
+import ExpandAltIcon from '@patternfly/react-icons/dist/esm/icons/expand-alt-icon';
 import { AskOptions } from './useAstro';
 import { BannerEntry } from '../Message/BannerEntry';
 
@@ -92,6 +94,10 @@ export const AstroChat: React.FunctionComponent<AstroChatProps> = ({ messages, s
               </TextContent>
             </SplitItem>
             <SplitItem>
+              <Button variant="plain" aria-label="Full screen" className="astro-c-button-minimize pf-v5-u-p-md pf-v5-u-pl-sm pf-v5-u-color-light-100">
+                <CompressAltIcon />
+                <ExpandAltIcon />
+              </Button>
               <Button
                 variant="plain"
                 aria-label="Close virtual assistant"
