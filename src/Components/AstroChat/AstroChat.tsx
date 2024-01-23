@@ -1,5 +1,19 @@
 import React, { Dispatch, KeyboardEventHandler, SetStateAction, useCallback, useLayoutEffect, useRef, useState } from 'react';
-import { Button, InputGroup, InputGroupText, Split, SplitItem, Stack, StackItem, Text, TextArea, TextContent } from '@patternfly/react-core';
+import {
+  Button,
+  InputGroup,
+  InputGroupText,
+  Split,
+  SplitItem,
+  Stack,
+  StackItem,
+  Text,
+  TextArea,
+  TextContent,
+  Toolbar,
+  ToolbarGroup,
+  ToolbarItem,
+} from '@patternfly/react-core';
 import { original, produce } from 'immer';
 import AngleDownIcon from '@patternfly/react-icons/dist/esm/icons/angle-down-icon';
 import { LoadingMessageEntry } from '../Message/LoadingMessageEntry';
@@ -97,30 +111,26 @@ export const AstroChat: React.FunctionComponent<AstroChatProps> = ({
   return (
     <div ref={astroContainer}>
       <Stack className={`astro-l-stack ${fullscreen ? 'astro-l-stack-full-screen' : ''}`}>
-        <StackItem className="astro-l-stack__header pf-v5-pt-xs">
+        <StackItem className="astro-l-stack__header pf-v5-u-py-md">
           <Split hasGutter>
             <SplitItem isFilled>
-              <TextContent className="pf-v5-u-pt-md pf-v5-u-pl-lg pf-u-color-light-100 pf-v5-u-font-size-xl">
+              <TextContent className="pf-v5-u-pl-lg pf-u-color-light-100 pf-v5-u-font-size-xl">
                 <Text>Virtual Assistant</Text>
               </TextContent>
             </SplitItem>
             <SplitItem>
-              <Button
-                variant="plain"
-                aria-label="Full screen"
-                onClick={() => setFullScreen(!fullscreen)}
-                className="astro-c-button-minimize pf-v5-u-p-md pf-v5-u-pl-sm pf-v5-u-color-light-100"
-              >
-                {fullscreen ? <CompressAltIcon /> : <ExpandAltIcon />}
-              </Button>
-              <Button
-                variant="plain"
-                aria-label="Close virtual assistant"
-                className="astro-c-button-minimize pf-v5-u-p-md pf-v5-u-pl-sm pf-v5-u-color-light-100"
-                onClick={onClose}
-              >
-                <AngleDownIcon />
-              </Button>
+              <ToolbarGroup variant="icon-button-group">
+                <ToolbarItem>
+                  <Button variant="plain" aria-label="Full screen" onClick={() => setFullScreen(!fullscreen)} className="pf-v5-u-color-light-100">
+                    {fullscreen ? <CompressAltIcon /> : <ExpandAltIcon />}
+                  </Button>
+                </ToolbarItem>
+                <ToolbarItem>
+                  <Button variant="plain" aria-label="Close virtual assistant" onClick={onClose} className="pf-v5-u-color-light-100">
+                    <AngleDownIcon />
+                  </Button>
+                </ToolbarItem>
+              </ToolbarGroup>
             </SplitItem>
           </Split>
         </StackItem>
