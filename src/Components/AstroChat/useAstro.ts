@@ -36,13 +36,7 @@ const loadMessage = async (
     })
   );
 
-  const startTime = new Date().getTime();
-  const resolvedContent = await content;
-
-  const endTime = new Date().getTime();
-  const remainingTime = Math.max(minTimeout - endTime + startTime, 0);
-
-  await asyncSleep(remainingTime);
+  const [resolvedContent] = await Promise.all([content, asyncSleep(minTimeout)]);
 
   if (resolvedContent !== undefined) {
     const contentString = typeof resolvedContent === 'string' ? resolvedContent : resolvedContent.text;
@@ -154,6 +148,16 @@ export const useAstro = (messageProcessors: Array<MessageProcessor>) => {
     );
   };
 
+  const addThumbMessage = (): void => {
+    setMessages(
+      produce((draft) => {
+        draft.push({
+          from: From.THUMBS,
+        });
+      })
+    );
+  };
+
   const ask = useCallback(
     async (message: string, options?: Partial<AskOptions>) => {
       if (loadingResponse) {
@@ -194,6 +198,7 @@ export const useAstro = (messageProcessors: Array<MessageProcessor>) => {
             toggleFeedbackModal,
             addSystemMessage,
             addBanner,
+            addThumbMessage,
           };
 
           await loadMessage(
