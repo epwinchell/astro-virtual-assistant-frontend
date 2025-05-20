@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { Alert, AlertActionCloseButton, Icon, Label, Skeleton } from '@patternfly/react-core';
+import { Alert, AlertActionCloseButton, Label, Skeleton } from '@patternfly/react-core';
 import { original, produce } from 'immer';
 import AngleDownIcon from '@patternfly/react-icons/dist/esm/icons/angle-down-icon';
 import { Banner, From, Message } from '../../types/Message';
@@ -13,7 +13,6 @@ import { AskOptions } from './useAstro';
 import { BannerEntry } from '../Message/BannerEntry';
 import { ThumbsMessageEntry } from '../Message/ThumbsMessageEntry';
 import { LoadingMessage, VirtualAssistant, VirtualAssistantAction } from '@patternfly/virtual-assistant';
-import ExternalLinkAltIcon from '@patternfly/react-icons/dist/esm/icons/external-link-alt-icon';
 
 import ChatbotIcon from '../icon-chatbot-animated';
 
@@ -151,24 +150,12 @@ export const AstroChat: React.FunctionComponent<AstroChatProps> = ({
           title="You are about to utilize Red Hat's Hybrid Cloud Console virtual assistant chat tool"
           actionClose={<AlertActionCloseButton onClose={() => setAlertClosed(true)} />}
         >
-          Please do not include any personal information or confidential information in your interaction with the virtual assistant. The tool is
-          intended to assist with general queries.
+          This feature uses AI technology. Please do not include personal information or other sensitive information in your input. Interactions may
+          be used to improve Red Hat&apos;s products or services.
           <div className="pf-v5-u-mt-md">
             <Label className="pf-v5-u-mr-md pf-v5-u-px-md" onClick={() => setAlertClosed(true)}>
               Got it
             </Label>
-            <a href="https://www.redhat.com/en/about/terms-use" className="pf-v5-u-pr-sm">
-              Red Hat Terms{' '}
-              <Icon iconSize="sm" isInline>
-                <ExternalLinkAltIcon />
-              </Icon>
-            </a>
-            <a href="https://www.redhat.com/en/about/privacy-policy">
-              Privacy Statement{' '}
-              <Icon iconSize="sm" isInline>
-                <ExternalLinkAltIcon />
-              </Icon>
-            </a>
           </div>
         </Alert>
       )}
